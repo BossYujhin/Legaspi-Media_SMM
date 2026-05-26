@@ -16,9 +16,8 @@ export default function Home() {
         <div className="hero-bg-noise" />
         <div className="container hero-grid">
           <div className="hero-copy">
-            <span className="eyebrow">Strategic media & luxury SMM</span>
             <h1>
-              We create brands that <em>lead the market.</em>
+              We create brands that <em>leave a Mark.</em>
             </h1>
             <p>
               Legaspi Media builds premium social identities, content campaigns, and conversion systems for ambitious brands that want to look high-value and grow with intention.
