@@ -13,81 +13,24 @@ import Contact from './pages/Contact.jsx';
 import NotFound from './pages/NotFound.jsx';
 
 
-function clamp(value, min, max) {
-  return Math.min(Math.max(value, min), max);
-}
-
-function useSectionParallax() {
-  useEffect(() => {
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduceMotion) return undefined;
-
-    let frameId = 0;
-    let targets = [];
-
-    const collectTargets = () => {
-      targets = Array.from(
-        document.querySelectorAll('.hero-section, .page-hero, .section, .cta-section')
-      );
-      targets.forEach((target) => target.classList.add('scroll-parallax-section'));
-    };
-
-    const updateSections = () => {
-      if (!targets.length) collectTargets();
-
-      targets.forEach((target) => {
-        const rect = target.getBoundingClientRect();
-        const viewportCenter = window.innerHeight / 2;
-        const elementCenter = rect.top + rect.height / 2;
-        const distance = viewportCenter - elementCenter;
-        const isHero = target.classList.contains('hero-section');
-        const isPageHero = target.classList.contains('page-hero');
-        const maxLift = isHero ? 88 : isPageHero ? 64 : 46;
-        const layerY = clamp(distance * 0.12, -maxLift, maxLift);
-        const contentY = clamp(distance * -0.026, -18, 18);
-        const gridY = clamp(layerY * 0.34, -28, 28);
-
-        target.style.setProperty('--section-parallax-y', `${layerY.toFixed(2)}px`);
-        target.style.setProperty('--section-content-y', `${contentY.toFixed(2)}px`);
-        target.style.setProperty('--section-grid-y', `${gridY.toFixed(2)}px`);
-      });
-
-      frameId = 0;
-    };
-
-    const requestUpdate = () => {
-      if (frameId) return;
-      frameId = window.requestAnimationFrame(updateSections);
-    };
-
-    collectTargets();
-    updateSections();
-
-    window.addEventListener('scroll', requestUpdate, { passive: true });
-    window.addEventListener('resize', requestUpdate);
-
-    const main = document.querySelector('.page-transition-wrap') || document.body;
-    const observer = new MutationObserver(() => {
-      collectTargets();
-      requestUpdate();
-    });
-    observer.observe(main, { childList: true, subtree: true });
-
-    return () => {
-      window.removeEventListener('scroll', requestUpdate);
-      window.removeEventListener('resize', requestUpdate);
-      observer.disconnect();
-      if (frameId) window.cancelAnimationFrame(frameId);
-    };
-  }, []);
-}
-
 function ScrollToTop() {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [pathname]);
+    if (!hash) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
+    const id = hash.replace('#', '');
+    const element = document.getElementById(id);
+
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [pathname, hash]);
 
   return null;
 }
@@ -122,8 +65,6 @@ function AnimatedRoutes() {
 }
 
 export default function App() {
-  useSectionParallax();
-
   return (
     <>
       <ScrollToTop />

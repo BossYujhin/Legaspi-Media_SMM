@@ -1,11 +1,25 @@
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { navLinks } from '../data/siteData.js';
 import Button from './Button.jsx';
 import Logo from './Logo.jsx';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+  const currentHash = location.hash || '#home';
+
+  const linkIsActive = (link) => {
+    if (link.path.startsWith('/#')) {
+      const linkHash = `#${link.path.split('#')[1]}`;
+      if (linkHash === '#home') {
+        return location.pathname === '/' && (!location.hash || location.hash === '#home');
+      }
+      return location.pathname === '/' && location.hash === linkHash;
+    }
+
+    return location.pathname === link.path;
+  };
 
   return (
     <header className="site-header">
@@ -28,7 +42,7 @@ export default function Header() {
             <NavLink
               key={link.path}
               to={link.path}
-              className={({ isActive }) => (isActive ? 'active' : '')}
+              className={() => (linkIsActive(link) ? 'active' : '')}
               onClick={() => setIsOpen(false)}
             >
               {link.label}

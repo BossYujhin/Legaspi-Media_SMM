@@ -1,4 +1,4 @@
-const brands = ['Vibe Collective', 'Nova Studio', 'Odyssey Apparel', 'Lumen Coffee', 'Élevé Skincare', 'Auris Legal'];
+const brands = ['Vibe Collective', 'Nova Studio', 'Odyssey Apparel', 'Lumen Coffee', 'Élevé Skincare'];
 
 export default function BrandMarquee() {
   return (
