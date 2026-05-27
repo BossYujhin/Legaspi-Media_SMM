@@ -1,10 +1,9 @@
 export const navLinks = [
-  { label: 'Home', path: '/' },
+  { label: 'Home', path: '/#home' },
   { label: 'About', path: '/about' },
-  { label: 'Services', path: '/services' },
-  { label: 'Portfolio', path: '/portfolio' },
-  { label: 'Process', path: '/process' },
-  { label: 'Pricing', path: '/pricing' },
+  { label: 'Services', path: '/#services' },
+  { label: 'Portfolio', path: '/#portfolio' },
+  { label: 'Process', path: '/#process' },
   { label: 'Contact', path: '/contact' },
 ];
 
@@ -16,27 +15,42 @@ export const stats = [
 ];
 
 export const services = [
-  {
-    eyebrow: '01',
-    title: 'Brand Strategy',
-    summary:
-      'A premium foundation for your social presence: positioning, messaging, content pillars, and a creative direction your audience can recognize instantly.',
-    features: ['Brand audit', 'Audience mapping', 'Content pillars', 'Campaign positioning'],
-  },
-  {
-    eyebrow: '02',
-    title: 'Social Media Management',
-    summary:
-      'Daily execution for brands that need a polished online presence with consistent posts, captions, scheduling, engagement, and monthly reporting.',
-    features: ['Content calendar', 'Caption writing', 'Scheduling', 'Community engagement'],
-  },
-  {
-    eyebrow: '03',
-    title: 'Luxury Content Design',
-    summary:
-      'Scroll-stopping visuals for Instagram, Facebook, TikTok, LinkedIn, and campaign launches using a refined red, noir, and editorial visual language.',
-    features: ['Static posts', 'Carousel design', 'Story sets', 'Launch creatives'],
-  },
+{
+  eyebrow: '01',
+  title: 'Branding',
+  summary:
+    'We craft strategic brand identities that connect and command attention.',
+  features: [
+    'Brand strategy',
+    'Audience mapping',
+    'Visual identity',
+    'Campaign positioning',
+  ],
+},
+{
+  eyebrow: '02',
+  title: 'Web Design',
+  summary:
+    'We build modern, conversion-focused websites that elevate your brand online.',
+  features: [
+    'Responsive design',
+    'UI/UX optimization',
+    'Landing pages',
+    'Website development',
+  ],
+},
+{
+  eyebrow: '03',
+  title: 'Media Production',
+  summary:
+    'We create high-impact content that tells your story and drives engagement.',
+  features: [
+    'Video production',
+    'Photography',
+    'Motion graphics',
+    'Social media creatives',
+  ],
+},
   {
     eyebrow: '04',
     title: 'Short-Form Video Campaigns',
@@ -75,6 +89,13 @@ export const caseStudies = [
     summary:
       'A premium conversion website built around studio bookings, trust sections, and high-impact service presentation.',
   },
+    {
+    title: 'Vibe Collective',
+    category: 'Media Production',
+    metric: '+96% reel retention',
+    summary:
+      'Short-form video concepts, production direction, and teaser edits designed for stronger watch time.',
+  },
   {
     title: 'Odyssey Apparel',
     category: 'Campaign Direction',
@@ -89,13 +110,7 @@ export const caseStudies = [
     summary:
       'A bold content identity for daily cafe promotions, brand stories, and local community engagement.',
   },
-  {
-    title: 'Vibe Collective',
-    category: 'Media Production',
-    metric: '+96% reel retention',
-    summary:
-      'Short-form video concepts, production direction, and teaser edits designed for stronger watch time.',
-  },
+
   {
     title: 'Auris Legal',
     category: 'Authority Marketing',

@@ -326,7 +326,7 @@ textarea {
 .eyebrow::before {
   content: '✦';
   color: var(--red);
-  font-size: 13px;
+  font-size: 16px;
 }
 
 h1,
@@ -531,7 +531,7 @@ h2 {
 }
 
 .section-intro {
-  max-width: 700px;
+  max-width: 800px;
 }
 
 .section-intro.center {
@@ -1551,7 +1551,7 @@ textarea:focus {
 
 .hero-section,
 .page-hero {
-  background-attachment: fixed;
+  background-attachment: scroll;
 }
 
 .hero-showcase::before,
@@ -1602,8 +1602,7 @@ textarea:focus {
 }
 
 .parallax-layer {
-  will-change: transform;
-  transition: transform 0.08s linear;
+  transform: none;
 }
 
 .hero-parallax-media,
@@ -1871,93 +1870,13 @@ textarea:focus {
   z-index: 0;
 }
 
-/* Stronger scroll parallax upgrade */
-.scroll-parallax-section {
-  --section-parallax-y: 0px;
-  --section-content-y: 0px;
-  --section-grid-y: 0px;
-  position: relative;
-  overflow: hidden;
-  isolation: isolate;
-}
-
-.scroll-parallax-section > .container,
-.scroll-parallax-section > .hero-grid {
-  position: relative;
-  z-index: 2;
-  transform: translate3d(0, var(--section-content-y), 0);
-  transition: transform 0.06s linear;
-  will-change: transform;
-}
-
-.section.scroll-parallax-section::after {
-  content: '';
-  position: absolute;
-  z-index: 0;
-  pointer-events: none;
-  left: -10vw;
-  top: -18%;
-  width: 42vw;
-  height: 42vw;
-  min-width: 420px;
-  min-height: 420px;
-  border-radius: 999px;
-  background: radial-gradient(circle, rgba(227, 30, 36, 0.17), transparent 64%);
-  filter: blur(1px);
-  opacity: 0.9;
-  transform: translate3d(0, var(--section-parallax-y), 0) scale(1.08);
-  will-change: transform;
-}
-
-.section-ivory.scroll-parallax-section::after,
-.section-redline.scroll-parallax-section::after {
-  background: radial-gradient(circle, rgba(227, 30, 36, 0.13), rgba(199, 173, 112, 0.09) 38%, transparent 68%);
-}
-
-.section-dark.scroll-parallax-section::after {
-  left: auto;
-  right: -8vw;
-  background: radial-gradient(circle, rgba(227, 30, 36, 0.22), transparent 66%);
-}
-
-.hero-section.scroll-parallax-section::after {
-  content: '';
-  position: absolute;
-  z-index: 0;
-  pointer-events: none;
-  right: -14vw;
-  top: -18%;
-  width: 58vw;
-  height: 58vw;
-  border-radius: 999px;
-  background:
-    radial-gradient(circle, rgba(227, 30, 36, 0.26), rgba(227, 30, 36, 0.08) 38%, transparent 68%);
-  transform: translate3d(0, var(--section-parallax-y), 0) scale(1.05);
-  will-change: transform;
-}
-
-.page-hero.scroll-parallax-section::after,
-.scroll-parallax-section .cta-card::after {
-  animation: none !important;
-  transform: translate3d(0, var(--section-parallax-y), 0) scale(1.06);
-  will-change: transform;
-}
-
-.pattern-section.scroll-parallax-section::before,
-.hero-section.scroll-parallax-section::before,
-.cta-card::before {
-  transform: translate3d(0, var(--section-grid-y), 0);
-  will-change: transform;
-}
-
 .parallax-frame {
   min-height: 100%;
 }
 
 .parallax-layer {
   min-height: 100%;
-  transform: translate3d(0, 0, 0) scale(1.24);
-  transition: transform 0.04s linear;
+  transform: none;
 }
 
 .parallax-layer .image-skeleton-wrap,
@@ -1967,16 +1886,17 @@ textarea:focus {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .scroll-parallax-section > .container,
-  .scroll-parallax-section > .hero-grid,
-  .section.scroll-parallax-section::after,
-  .hero-section.scroll-parallax-section::after,
-  .page-hero.scroll-parallax-section::after,
-  .scroll-parallax-section .cta-card::after,
-  .pattern-section.scroll-parallax-section::before,
-  .hero-section.scroll-parallax-section::before,
-  .cta-card::before {
-    transform: none !important;
+  .parallax-layer,
+  .hero-showcase::before,
+  .page-hero::after,
+  .cta-card::after,
+  .image-skeleton,
+  .skeleton-line,
+  .skeleton-copy,
+  .skeleton-visual,
+  .skeleton-card-grid article,
+  .skeleton-actions span {
+    animation: none !important;
     transition: none !important;
   }
 }

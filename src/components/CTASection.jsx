@@ -1,8 +1,8 @@
 import Button from './Button.jsx';
 
-export default function CTASection({ title = 'Ready to make your brand impossible to ignore?', text = 'Let’s build a premium content system that looks expensive, feels strategic, and brings better inquiries.' }) {
+export default function CTASection({ id, title = 'Ready to make your brand impossible to ignore?', text = 'Let’s build a premium content system that looks expensive, feels strategic, and brings better inquiries.' }) {
   return (
-    <section className="cta-section">
+    <section id={id} className="cta-section">
       <div className="container cta-card">
         <div>
           <span className="eyebrow">Book your brand review</span>
